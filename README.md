@@ -9,9 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 The following packages are required in order to implement this project
 
-Here are some READMEs generated using common-readme:
-
-- [`pandas`]
-- [`BeautifulSoup`]
-- [`matplotlib`]
+- `pandas`
+- `BeautifulSoup`
+- `matplotlib`
 
