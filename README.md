@@ -37,3 +37,16 @@ df['Comments'] = df['Comments'].replace('',np.nan)
 df.dropna(inplace = True)
 df['Comments'] = df['Comments'].str.lower()
 ```
+
+#Step 3: Generating WordCloud
+
+Once the final CSV of comments is made the program ```gen_wordcloud.py``` helps in making two
+different wordclouds of different sizes. The size of a word determiens how frequently that word
+occurs in the comments. 
+
+#Step 4: Further works
+
+I will be working on correlating words with genres and possibly performing sentiment analysis on the
+comments to determine the ratio of postive to negative comments.
+
+
