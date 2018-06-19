@@ -47,6 +47,8 @@ occurs in the comments.
 #Step 4: Further works
 
 I will be working on correlating words with genres and possibly performing sentiment analysis on the
-comments to determine the ratio of postive to negative comments.
+comments to determine the ratio of postive to negative comments. There is tons of scope in terms of
+producing interesting graphs with this data.
+
 
 
