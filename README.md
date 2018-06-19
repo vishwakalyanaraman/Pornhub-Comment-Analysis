@@ -13,19 +13,19 @@ The following packages are required in order to implement this project
 - `BeautifulSoup`
 - `matplotlib`
 
-#Step 1: Collecting Links
+# Step 1: Collecting Links
 
 The very first step in analysing comments is to collect links of videos. To do so I have written a
 script ```link_collector.py```. This script collects all links from a video's page and cleans the
 data into a CSV file.
 
-#Step 2: Collecting Comments
+# Step 2: Collecting Comments
 
 Once the links have been collected we can start extracting the comments from each video. This is
 done with the ```scraper.py``` script. The scraper finds all comments in a video and extracts them
 into a CSV file.
 
-###Cleaning the data
+### Cleaning the data
 
 The data is cleaned using Pandas with the following code:
 
