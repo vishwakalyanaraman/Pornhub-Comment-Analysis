@@ -13,11 +13,11 @@ def fetchingLinks():
 		soup = BeautifulSoup(resp.text, 'html.parser')
 
 	#Getting Links
-	for tag in soup.find_all('a', href=True):
-		i = 0
-		url2 = tag.attrs['href']
-		links[i] = links.append(BASE_URL+url2)
-		i += 1
+		for tag in soup.find_all('a', href=True):
+			i = 0
+			url2 = tag.attrs['href']
+			links[i] = links.append(BASE_URL+url2)
+			i += 1
 
 	else:
 		print("Error connecting")
@@ -27,11 +27,12 @@ def fetchingLinks():
 
 	#Cleaning data
 	df = df[df.Links.str.startswith('https://www.pornhub.com/view', na = False)]
-
+	df.drop_duplicates(inplace=True)
+	df.reset_index(drop=True, inplace=True)
 	return df
 
 LinksDF = fetchingLinks()
 
 #Export to CSV
-LinksDF.csv("CleanedLinks.csv")
+LinksDF.to_csv("CleanedLinks.csv")
 
