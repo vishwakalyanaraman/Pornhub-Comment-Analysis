@@ -2,29 +2,40 @@ import requests
 import pandas as pd
 import numpy as np
 from bs4 import BeautifulSoup
+import csv
 
 def commentData():
 	comment = {}
+	i = 0
+	comments_list1 = []
 	comments_list = []
+	xyz = []
 	links_list = []
-	#Starting URL (can be changed later)
-	url = "https://www.pornhub.com/view_video.php?viewkey=2006034279"
-	BASE_URL = "https://www.pornhub.com"
-	resp = requests.get(url)
-	if resp.status_code == 200:
-		print("**********Successfully connected**********")
-		soup = BeautifulSoup(resp.text, 'html.parser')
-    	
-    	#Getting comments
-		for comment_block in soup.findAll("div", {"class" : "commentMessage"}):
-			i = 0
-			comment = comment_block.findAll("span")[i]
-			comments_list[i] = comments_list.extend(comment)
-			i+=1
+	#df = pd.DataFrame({'Comments':[]})
+	urls = pd.read_csv("CleanedLinks.csv",index_col=0)
+	url_list = list(urls.values.flatten())
+	for x in url_list:
+		#url1 = column.loc[1]
+		url = "https://www.pornhub.com/view_video.php?viewkey=2006034279"
+		BASE_URL = "https://www.pornhub.com"
+		resp = requests.get(x)
+		if resp.status_code == 200:
+			#print("**********Successfully connected**********")
+			soup = BeautifulSoup(resp.text, 'html.parser')
+	    	
+	    	#Getting comments
+			for comment_block in soup.findAll("div", {"class" : "commentMessage"}):
+				i = 0
+				comment = comment_block.findAll("span")[i]
+				#df.append(comment)
+				comments_list[i] = comments_list.extend(comment)
+				i+=1
+			xyz = comments_list
+			comments_list1.extend(xyz)
 
-	df = pd.DataFrame(comments_list)
-	df.columns =['Comments']
-
+		print("Total number of comments are "+str(len(comments_list1)))
+		
+		df = pd.DataFrame(comments_list, columns=['Comments'])
 	return (df)
 
 def cleanComments(df):
@@ -49,4 +60,14 @@ New_Comments.reset_index(drop=True, inplace=True)
 print('******SAMPLE DATA******')
 print(New_Comments.head())
 
-New_Comments.csv('CleanedComments.csv')
+print("Exporting file to CSV...")
+New_Comments.to_csv('CleanedComments.csv')
+
+print("Exporting file to TXT...")
+csv_file = "CleanedComments.csv"
+txt_file = "CleanedComments.txt"
+with open(txt_file, "w") as my_output_file:
+	with open(csv_file, "r") as my_input_file:
+		 [ my_output_file.write(" ".join(row)+'\n') for row in csv.reader(my_input_file)]
+	my_output_file.close()
+
