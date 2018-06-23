@@ -33,7 +33,7 @@ def commentData():
 			xyz = comments_list
 			comments_list1.extend(xyz)
 
-		print("Total number of comments are "+str(len(comments_list1)))
+		print("Total number of comments (before cleaning) are "+str(len(comments_list1)))
 		
 		df = pd.DataFrame(comments_list, columns=['Comments'])
 	return (df)
@@ -57,13 +57,15 @@ Old_Comments  = commentData()
 New_Comments = cleanComments(Old_Comments)
 New_Comments.reset_index(drop=True, inplace=True)
 
-print('******SAMPLE DATA******')
+print("Total number of comments (after cleaning) are " + str(New_Comments.size))
+
+print('\n+******SAMPLE DATA******')
 print(New_Comments.head())
 
-print("Exporting file to CSV...")
-New_Comments.to_csv('CleanedComments.csv')
+print("Exporting file to CSV...",flush = True)
+New_Comments['Comments'].to_csv('CleanedComments.csv')
 
-print("Exporting file to TXT...")
+print("Exporting file to TXT...",flush = True)
 csv_file = "CleanedComments.csv"
 txt_file = "CleanedComments.txt"
 with open(txt_file, "w") as my_output_file:
