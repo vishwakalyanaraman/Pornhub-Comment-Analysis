@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 def fetchingLinks():
 	links =[]
-	url = "https://www.pornhub.com/view_video.php?viewkey=2006034279"
+	url = "https://www.pornhub.com/view_video.php?viewkey=ph58ed20cf95bd9"
 	BASE_URL = "https://www.pornhub.com"
 	resp = requests.get(url)
 	if resp.status_code == 200:
@@ -35,4 +35,4 @@ LinksDF = fetchingLinks()
 
 #Export to CSV
 LinksDF.to_csv("CleanedLinks.csv")
-
+print("The number of links collected was " + str(len(LinksDF)))
