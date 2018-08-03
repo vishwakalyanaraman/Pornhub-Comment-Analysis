@@ -46,7 +46,7 @@ Once the final CSV of comments is made the program ```gen_wordcloud.py``` helps 
 different wordclouds of different sizes. The size of a word determines how frequently that word
 occurs in the comments. 
 
-![alt_text](/Examples/example1.png)
+![alt_text](/Examples/figure1.png)
 # Step 4: Further works
 
 I will be working on correlating words with genres and possibly performing sentiment analysis on the
