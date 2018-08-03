@@ -65,6 +65,9 @@ print(New_Comments.head())
 print("Exporting file to CSV...",flush = True)
 New_Comments['Comments'].to_csv('CleanedComments.csv')
 
+
+#Convert CSV to TXT for easy wordcloud
+
 print("Exporting file to TXT...",flush = True)
 csv_file = "CleanedComments.csv"
 txt_file = "CleanedComments.txt"

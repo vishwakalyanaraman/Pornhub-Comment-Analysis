@@ -27,6 +27,8 @@ into a CSV file.
 
 ### Cleaning the data
 
+When collecting comments, most of them were HTML or CSS tags which needed to be removed before
+processing.
 The data is cleaned using Pandas with the following code:
 
 ```
@@ -41,9 +43,10 @@ df['Comments'] = df['Comments'].str.lower()
 # Step 3: Generating WordCloud
 
 Once the final CSV of comments is made the program ```gen_wordcloud.py``` helps in making two
-different wordclouds of different sizes. The size of a word determiens how frequently that word
+different wordclouds of different sizes. The size of a word determines how frequently that word
 occurs in the comments. 
 
+![alt_text](/Examples/example1.png)
 # Step 4: Further works
 
 I will be working on correlating words with genres and possibly performing sentiment analysis on the
